@@ -3,5 +3,8 @@ package persistence;
 import model.UserModel;
 
 public interface IUserRepository {
-    boolean login(UserModel user);
+    UserModel createUser(String username, String password);
+
+    UserModel getUserByUsername(String username);
+
 }

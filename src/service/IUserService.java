@@ -1,8 +1,8 @@
 package service;
 
-import model.UserModel;
-
 public interface IUserService {
 
-    boolean login(UserModel user);
+    boolean login(String username, String password);
+
+    boolean register(String username, String password);
 }

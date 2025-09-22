@@ -1,25 +1,34 @@
 package handler;
 
-import model.UserModel;
 import service.IUserService;
-import service.UserService;
 
 public class UserHandler {
 
-    private IUserService userService;
+    private final IUserService userService;
 
     public UserHandler(IUserService userService) {
         this.userService = userService;
     }
 
-    public boolean login(UserModel user){
-        if(user == null){
-            return false;
+    private static boolean validate(String username, String password) {
+        //validate input parameter
+        if (username == null) {
+            return true;
         }
-        if(user.getPassword().isBlank()){
-            return false;
+        if (password == null) {
+            return true;
         }
-        return userService.login(user);
+        return password.isBlank();
+    }
+
+    public boolean register(String username, String password) {
+        if (validate(username, password)) return false;
+        return userService.register(username, password);
+    }
+
+    public boolean login(String username, String password) {
+        if (validate(username, password)) return false;
+        return userService.login(username, password);
     }
 
 }

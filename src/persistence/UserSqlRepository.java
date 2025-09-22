@@ -2,25 +2,34 @@ package persistence;
 
 import model.UserModel;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class UserSqlRepository implements IUserRepository {
 
-    private static UserSqlRepository instance = new UserSqlRepository();
+    private static final UserSqlRepository instance = new UserSqlRepository();
     public static UserSqlRepository getInstance(){return instance;}
 
-    private List<UserModel> users;
+    private final List<UserModel> users; //simulates DB
 
-    private UserSqlRepository(){}
-
-    public boolean login(UserModel user) {
-        for (UserModel userModel : users) {
-            if(userModel.getUsername().equals(user.getUsername())
-                    && userModel.getPassword().equals(user.getPassword())){
-                return true;
-            }
-        }
-        return false;
+    private UserSqlRepository() {
+        users = new ArrayList<>();
     }
 
+    @Override
+    public UserModel createUser(String username, String password) {
+        UserModel user = new UserModel(UUID.randomUUID().toString(), username, password);
+        users.add(user); //change to DB code
+        return user;
+    }
+
+    @Override
+    public UserModel getUserByUsername(String username) {
+        //demo: search for user
+        return users.stream()
+                .filter(user -> user.getUsername().equals(username))
+                .findFirst()
+                .orElse(null);
+    }
 }
