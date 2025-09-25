@@ -1,4 +1,4 @@
-package manager;
+package solid.si;
 
 import model.UserModel;
 

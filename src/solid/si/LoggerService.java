@@ -1,4 +1,4 @@
-package manager;
+package solid.si;
 
 public class LoggerService {
 
