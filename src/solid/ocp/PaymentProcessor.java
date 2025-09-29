@@ -1,4 +1,4 @@
-package solid.oc;
+package solid.ocp;
 
 import java.util.HashMap;
 import java.util.Map;

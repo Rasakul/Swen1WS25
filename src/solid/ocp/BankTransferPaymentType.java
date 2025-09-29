@@ -1,4 +1,4 @@
-package solid.oc;
+package solid.ocp;
 
 public class BankTransferPaymentType extends PaymentType {
 

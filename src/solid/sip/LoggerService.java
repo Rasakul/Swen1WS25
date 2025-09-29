@@ -1,4 +1,4 @@
-package solid.si;
+package solid.sip;
 
 public class LoggerService {
 

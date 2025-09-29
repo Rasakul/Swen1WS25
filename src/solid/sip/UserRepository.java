@@ -1,4 +1,4 @@
-package solid.si;
+package solid.sip;
 
 import model.UserModel;
 
